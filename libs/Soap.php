@@ -2,10 +2,10 @@
 
 class Soap{
 
-    public $soapclient;
+    protected $soapclient;
 
     public function __construct(){
-        $this->soapclient = new SoapClient('http://webservices.oorsprong.org/websamples.countryinfo/CountryInfoService.wso?WSDL');
+        $this->soapclient = new SoapClient(WSDL);
     }
 
     public function list_continents(){
@@ -17,5 +17,4 @@ class Soap{
         $response = $this->soapclient->CapitalCity(['sCountryISOCode'=>$code]);
         return $response->CapitalCityResult;
     }
-
 }
