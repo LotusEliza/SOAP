@@ -6,7 +6,7 @@
  * Time: 9:52 AM
  */
 
-class Curl
+class Curl implements iGetData
 {
 
     public function __construct(){

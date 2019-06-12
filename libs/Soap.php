@@ -1,6 +1,7 @@
 <?php
 
-class Soap{
+class Soap implements iGetData
+{
 
     protected $soapclient;
 
