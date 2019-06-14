@@ -143,13 +143,15 @@ INSERT INTO `models` (`id`, `model`) VALUES
 -- Table structure for table `orders`
 --
 
-CREATE TABLE `orders` (
+CREATE TABLE `orders_soap` (
   `id` int(11) NOT NULL,
   `name` varchar(255) NOT NULL,
   `surname` varchar(255) NOT NULL,
   `car_id` int(11) NOT NULL,
   `payment` enum('credit_cart','cash') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+
 
 --
 -- Indexes for dumped tables
@@ -192,7 +194,7 @@ ALTER TABLE `models`
 --
 -- Indexes for table `orders`
 --
-ALTER TABLE `orders`
+ALTER TABLE `orders_soap`
   ADD PRIMARY KEY (`id`),
   ADD KEY `car_id` (`car_id`);
 
@@ -233,8 +235,7 @@ ALTER TABLE `models`
 --
 -- AUTO_INCREMENT for table `orders`
 --
-ALTER TABLE `orders`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `orders_soap` MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- Constraints for dumped tables

@@ -7,15 +7,12 @@
 </head>
 <body>
 <div class="container">
-    <!------------------------------------LIST CARS-------------------------------------------->
-
-
-    <!-------------------------------SEARCH CAR------------------------------------------------->
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <!------ Include the above in your HEAD tag ---------->
 
+
+    <!------------------------------------LIST CARS--------------------------------------->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
     <div class="container">
         <br/>
@@ -29,54 +26,63 @@
         <div class="row justify-content-center">
             <div class="col-12 col-md-10 col-lg-8">
                 <!-------------------------------CARS INFO BY ID-------------------------------------------->
-                <form>
+                <form id="car_info" action="client.php" method="POST">
                     <div class="form-group">
-<!--                        <label for="exampleInputEmail1">Get car info by id:</label>-->
-                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Get car info by id">
+                        <input type="text" name="car_id" class="form-control" placeholder="Get car info by id">
                     </div>
                     <button class="btn btn-lg btn-success" type="submit">Get Info</button>
                 </form>
                 <br/>
-
-<!--                <form id="find-car" action="../client.php" method="POST">-->
-<!--                    <h4>Get car info by id:</h4>-->
-<!--                    <input type="text" name="username"><br>-->
-<!--                    <button class="btn btn-lg btn-success" type="submit">Get Info</button>-->
-<!--                </form>-->
             </div>
         </div>
-
         <div class="row justify-content-center">
             <div class="col-12 col-md-10 col-lg-8">
-                <form class="card card-sm">
-                    <div class="card-body row no-gutters align-items-center">
-                        <div class="col-auto">
-                            <i class="fas fa-search h4 text-body"></i>
+            <!-------------------------------SEARCH FOR A CAR-------------------------------------------->
+                <form id="search_car" action="client.php" method="POST">  
+                        <div class="form-group">
+                            <input type="text" name="year" class="form-control" placeholder="Year">
                         </div>
-                        <!--end of col-->
-                        <div class="col">
-                            <input class="form-control form-control-lg form-control-borderless" type="search" placeholder="Search by params">
+                        <div class="form-group">
+                            <input type="text" name="color" class="form-control" placeholder="Color">
                         </div>
-                        <!--end of col-->
-                        <div class="col-auto">
-                            <button class="btn btn-lg btn-success" type="submit">Search</button>
+                        <div class="form-group">
+                            <input type="text" name="price" class="form-control" placeholder="Price">
                         </div>
-                        <!--end of col-->
-                    </div>
+                        <div class="form-group">
+                            <input type="text" name="speed" class="form-control" placeholder="Speed">   
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="capacity" class="form-control" placeholder="Capacity">   
+                        </div>
+                        <button type="submit" class="btn btn-lg btn-success">Search</button>
                 </form>
-
+                <br/>
             </div>
-            <!--end of col-->
         </div>
     </div>
-    <!-------------------------------MAKE ORDER------------------------------------------------->
+    <div class="row justify-content-center">
+            <div class="col-12 col-md-10 col-lg-8">
+            <!-------------------------------MAKE ORDER------------------------------------------------->
+                <form id="add-user" action="client.php" method="POST">
+                        <div class="form-group">
+                            <input type="text" name="name" class="form-control" placeholder="Name">  
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="surname" class="form-control" placeholder="Surname">  
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="id" class="form-control" placeholder="Car ID"> 
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="payment" class="form-control" placeholder="Payment">
+                        </div>
+                        <button type="submit" class="btn btn-lg btn-success">Make order</button>
+                 </form>
+            </div>
+        </div>
+    </div>
 
 
-
-    <form id="add-user" action="client.php" method="POST">
-
-    </form>
-</div>
 <style>
     table {
         color: #333; /* Lighten up font color */
@@ -97,9 +103,6 @@
         background: #FAFAFA; /* Lighter grey background */
         text-align: center; /* Center our text */
     }
-
-
-
 
     .form-control-borderless {
         border: none;

@@ -16,8 +16,8 @@ class Cars
         $stm = $this->con->prepare($query);
         $stm->execute();
         $resultArray = $stm->fetchAll(PDO::FETCH_ASSOC);
-        var_dump($resultArray);
-        //return id, brand model
+        // var_dump($resultArray);
+        return $resultArray;
     }
 
     public function car_info($id){
@@ -27,9 +27,10 @@ class Cars
         $stm = $this->con->prepare($query);
         $stm->execute();
         $resultArray = $stm->fetchAll(PDO::FETCH_ASSOC);
-        var_dump($resultArray);
+        // var_dump($resultArray);
         //return id, brand model
         //return <complex type>: year, capacity, color, speed, price
+        return $resultArray;
     }
 
     public function search_by_params($year, $color, $price, $speed, $capacity){
@@ -40,16 +41,14 @@ class Cars
         $stm = $this->con->prepare($query);
         $stm->execute();
         $resultArray = $stm->fetchAll(PDO::FETCH_ASSOC);
-        var_dump($resultArray);
+        // var_dump($resultArray);
+        return $resultArray;
     }
 
     public function order($car_id, $name, $surname, $payment){
-        $query = "INSERT INTO orders (name, surname, car_id, payment) VALUES ('$name', '$surname', $car_id, $payment)";
+        $query = "INSERT INTO orders_soap (name, surname, car_id, payment) VALUES ('$name', '$surname', $car_id, $payment)";
         var_dump($query);
         $stm = $this->con->prepare($query);
-//        foreach ($this->values as $key => &$value){
-//            $stm->bindParam(':'.$key, $value, PDO::PARAM_STR);
-//        }
         $stm->execute();
         $this->query = NULL;
         $count = $stm->rowCount();
@@ -58,8 +57,6 @@ class Cars
         }else{
             return ERROR_INS;
         }
-
-        //return true false
     }
 
 

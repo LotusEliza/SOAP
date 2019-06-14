@@ -18,6 +18,7 @@ ini_set('display_errors', '1');
 // $server->setClass("Cars");
 // $server->handle();
 
+//-------------------List cars-------------------------
 $cars = array
 (
     array("Volvo",22,18),
