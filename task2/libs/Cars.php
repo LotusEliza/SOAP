@@ -10,10 +10,10 @@ class Cars
     }
 
     public function cars_list(){
-        $sqlQuery = "SELECT cars.id, brands.brand, models.model FROM cars 
+        $query = "SELECT cars.id, brands.brand, models.model FROM cars 
         INNER JOIN brands ON cars.brand_id = brands.id 
         INNER JOIN models ON cars.model_id = models.id;";
-        $stm = $this->con->prepare($sqlQuery);
+        $stm = $this->con->prepare($query);
         $stm->execute();
         $resultArray = $stm->fetchAll(PDO::FETCH_ASSOC);
         var_dump($resultArray);
@@ -21,9 +21,10 @@ class Cars
     }
 
     public function car_info($id){
-        $sqlQuery = "SELECT cars.year, cars.capacity, cars.speed, cars.price, colors.color  FROM cars 
-        INNER JOIN cars_colors ON cars.id = cars_colors.car_id";
-        $stm = $this->con->prepare($sqlQuery);
+        $query = "SELECT c.year, c.capacity, c.speed, c.price, col.color 
+                     FROM cars c INNER JOIN cars_colors cc ON c.id=cc.car_id
+                     INNER JOIN colors col ON cc.color_id=col.id WHERE c.id=$id";
+        $stm = $this->con->prepare($query);
         $stm->execute();
         $resultArray = $stm->fetchAll(PDO::FETCH_ASSOC);
         var_dump($resultArray);
@@ -31,21 +32,47 @@ class Cars
         //return <complex type>: year, capacity, color, speed, price
     }
 
-    public function search_by_params($param){
-        
+    public function search_by_params($year, $color, $price, $speed, $capacity){
+        $query = "SELECT c.year, c.capacity, c.speed, c.price, col.color 
+                     FROM cars c INNER JOIN cars_colors cc ON c.id=cc.car_id
+                     INNER JOIN colors col ON cc.color_id=col.id WHERE c.year=$year AND col.color 
+                     LIKE '%$color%' AND c.price LIKE '$price' AND c.speed LIKE '%$speed%' AND c.capacity LIKE '%$capacity%'";
+        $stm = $this->con->prepare($query);
+        $stm->execute();
+        $resultArray = $stm->fetchAll(PDO::FETCH_ASSOC);
+        var_dump($resultArray);
     }
 
-    public function order($id, $name, $surname, $payment){
+    public function order($car_id, $name, $surname, $payment){
+        $query = "INSERT INTO orders (name, surname, car_id, payment) VALUES ('$name', '$surname', $car_id, $payment)";
+        var_dump($query);
+        $stm = $this->con->prepare($query);
+//        foreach ($this->values as $key => &$value){
+//            $stm->bindParam(':'.$key, $value, PDO::PARAM_STR);
+//        }
+        $stm->execute();
+        $this->query = NULL;
+        $count = $stm->rowCount();
+        if($count){
+            return ITEM_INS;
+        }else{
+            return ERROR_INS;
+        }
 
         //return true false
     }
+
+
 
 // SELECT cars.id, brands.brand FROM cars INNER JOIN brands ON cars.brand_id = brands.id;
 // SELECT cars.id, brands.brand, models.model FROM cars INNER JOIN brands ON cars.brand_id = brands.id INNER JOIN models ON cars.model_id = models.id;
 // SELECT cars.year, cars.capacity, cars.speed, cars.price, colors.color FROM cars INNER JOIN cars_colors ON cars.id = cars_colors.car_id;
 // SELECT c.year, c.capacity, c.speed, c.price, cc.color FROM cars INNER JOIN cars_colors ON cars.id = cars_colors.car_id;
 // SELECT c.year, c.capacity, c.speed, c.price, cc.color FROM cars c INNER JOIN cars_colors cc ON c.id=cc.car_id;
-SELECT c.year, c.capacity, c.speed, c.price, col.color FROM cars c INNER JOIN cars_colors cc ON c.id=cc.car_id Inner Join colors col On cc.color_id=col.id;
+//SELECT c.year, c.capacity, c.speed, c.price, col.color FROM cars c INNER JOIN cars_colors cc ON c.id=cc.car_id Inner Join colors col On cc.color_id=col.id;
 
-
+//        SELECT c.year, c.capacity, c.speed, c.price, col.color
+//                     FROM cars c INNER JOIN cars_colors cc ON c.id=cc.car_id
+//                     INNER JOIN colors col ON cc.color_id=col.id WHERE col.color
+//                     LIKE '%red%' OR c.price LIKE '1000'
 }
