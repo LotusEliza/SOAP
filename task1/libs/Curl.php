@@ -13,7 +13,7 @@ class Curl implements iGetData
 
     }
 
-    public function list_continents(){
+    public function listContinents(){
 
         //Data, connection, auth
         $soapUrl = WSDL; // asmx URL of WSDL
@@ -59,7 +59,7 @@ class Curl implements iGetData
         return $continents;
     }
 
-    public function capital_city($code){
+    public function capitalCity($code){
 
         //Data, connection, auth
         $soapUrl = WSDL; // asmx URL of WSDL

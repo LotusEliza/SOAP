@@ -8,12 +8,12 @@ ini_set('display_errors', '1');
 
 
 function continents(iGetData $obj){
-    return $obj->list_continents();
+    return $obj->listContinents();
 }
 
 function capital(iGetData $obj){
     $code = 'CA';
-    return $obj->capital_city($code);
+    return $obj->capitalCity($code);
 }
 
 //************************* SOAP *************************************

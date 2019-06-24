@@ -9,12 +9,12 @@ class Soap implements iGetData
         $this->soapclient = new SoapClient(WSDL);
     }
 
-    public function list_continents(){
+    public function listContinents(){
         $continents = $this->soapclient->ListOfContinentsByName()->ListOfContinentsByNameResult->tContinent;
         return $continents;
     }
 
-    public function capital_city($code){
+    public function capitalCity($code){
         $response = $this->soapclient->CapitalCity(['sCountryISOCode'=>$code]);
         return $response->CapitalCityResult;
     }
