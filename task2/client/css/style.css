@@ -1,0 +1,65 @@
+
+/*table {*/
+    /*color: #333; !* Lighten up font color *!*/
+    /*font-family: Helvetica, Arial, sans-serif; !* Nicer font *!*/
+    /*width: 640px;*/
+    /*border-collapse: collapse;*/
+    /*border-spacing: 0;*/
+/*}*/
+
+/*td, th { border: 1px solid #CCC; height: 30px; } !* Make cells a bit taller *!*/
+
+/*th {*/
+    /*background: #F3F3F3; !* Light grey background *!*/
+    /*font-weight: bold; !* Make sure they're bold *!*/
+/*}*/
+
+/*td {*/
+    /*background: #FAFAFA; !* Lighter grey background *!*/
+    /*text-align: center; !* Center our text *!*/
+/*}*/
+
+table {
+    color: #333; /* Lighten up font color */
+    font-family: Helvetica, Arial, sans-serif; /* Nicer font */
+    width: 640px;
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+td, th { border: 1px solid #CCC; height: 30px; } /* Make cells a bit taller */
+
+th {
+    background: #F3F3F3; /* Light grey background */
+    font-weight: bold; /* Make sure they're bold */
+}
+
+td {
+    background: #FAFAFA; /* Lighter grey background */
+    text-align: center; /* Center our text */
+}
+
+.form-control-borderless {
+    border: none;
+}
+
+.form-control-borderless:hover, .form-control-borderless:active, .form-control-borderless:focus {
+    border: none;
+    outline: none;
+    box-shadow: none;
+}
+.table thead {
+    text-align: center;
+}
+
+.text-center {
+    background: palegreen;
+    overflow: hidden;
+    padding: 20px;
+    color: white;
+}
+
+
+.table>thead>tr>th {
+    text-align: center;
+}
